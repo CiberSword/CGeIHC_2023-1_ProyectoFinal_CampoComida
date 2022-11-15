@@ -75,7 +75,7 @@ StyleCopReport.xml
 *_h.h
 *.ilk
 *.meta
-*.obj
+#*.obj Para que no ignore los modelos .obj
 *.iobj
 *.pch
 *.pdb
