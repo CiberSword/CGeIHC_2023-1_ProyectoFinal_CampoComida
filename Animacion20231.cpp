@@ -45,6 +45,8 @@ const float toRadians = 3.14159265f / 180.0f;
 static float delay_daynight = 0.0f;
 static float light_changing = 1.0f;
 bool day_flag = true;
+int indexSkybox = 0.0f;
+
 
 float toffsetu = 0.0f;
 float toffsetv = 0.0f;
@@ -210,12 +212,78 @@ int main()
 	FlechaTexture.LoadTextureA();
 
 	std::vector<std::string> skyboxFaces;
-	skyboxFaces.push_back("Textures/Skybox/town_px.png");
-	skyboxFaces.push_back("Textures/Skybox/town_nx.png");
-	skyboxFaces.push_back("Textures/Skybox/town_ny.png");
-	skyboxFaces.push_back("Textures/Skybox/town_py.png");
-	skyboxFaces.push_back("Textures/Skybox/town_pz.png");
-	skyboxFaces.push_back("Textures/Skybox/town_nz.png");
+	std::vector<std::string> nowSkybox;
+
+	//light_1.0
+	skyboxFaces.push_back("Textures/Skybox/town_light_1_0/town_px.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_1_0/town_nx.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_1_0/town_ny.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_1_0/town_py.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_1_0/town_pz.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_1_0/town_nz.png");
+	//light_0.9
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_9/town_px.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_9/town_nx.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_9/town_ny.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_9/town_py.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_9/town_pz.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_9/town_nz.png");
+	//light_0.8
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_8/town_px.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_8/town_nx.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_8/town_ny.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_8/town_py.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_8/town_pz.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_8/town_nz.png");
+	//light_0.7
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_7/town_px.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_7/town_nx.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_7/town_ny.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_7/town_py.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_7/town_pz.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_7/town_nz.png");
+	//light_0.6
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_6/town_px.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_6/town_nx.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_6/town_ny.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_6/town_py.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_6/town_pz.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_6/town_nz.png");
+	//light_0.5
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_5/town_px.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_5/town_nx.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_5/town_ny.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_5/town_py.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_5/town_pz.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_5/town_nz.png");
+	//light_0.4
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_4/town_px.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_4/town_nx.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_4/town_ny.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_4/town_py.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_4/town_pz.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_4/town_nz.png");
+	//light_0.3
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_3/town_px.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_3/town_nx.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_3/town_ny.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_3/town_py.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_3/town_pz.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_3/town_nz.png");
+	//light_0.2
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_2/town_px.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_2/town_nx.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_2/town_ny.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_2/town_py.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_2/town_pz.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_2/town_nz.png");
+	//light_0.1
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_1/town_px.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_1/town_nx.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_1/town_ny.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_1/town_py.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_1/town_pz.png");
+	skyboxFaces.push_back("Textures/Skybox/town_light_0_1/town_nz.png");
 
 	skybox = Skybox(skyboxFaces);
 
@@ -299,13 +367,11 @@ int main()
 		meshList[2]->RenderMesh();
 				shaderList[0].SetDirectionalLight(&mainLight);
 
-
-
 		// SECCION PARA ANIMACIÓN
 
 		// Ciclado Dia-Noche de la luz direccional
 
-			if (delay_daynight >= 50.0f && day_flag == true) {
+			if (delay_daynight >= 500.0f && day_flag == true) {
 
 				mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
 					light_changing, light_changing,
@@ -313,12 +379,18 @@ int main()
 				shaderList[0].SetDirectionalLight(&mainLight);
 				light_changing -= 0.1;
 				delay_daynight = 0.0f;
+				
+				nowSkybox = { skyboxFaces.begin() + indexSkybox, skyboxFaces.begin() + indexSkybox + 6 };
+				skybox = Skybox(nowSkybox);
+				indexSkybox += 6;
+
 
 				if (light_changing <= 0.1)
 					day_flag = false;
+
 			}
 
-			if (delay_daynight >= 50.0f && day_flag == false) {
+			if (delay_daynight >= 500.0f && day_flag == false) {
 
 				mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
 					light_changing, light_changing,
@@ -326,6 +398,12 @@ int main()
 				shaderList[0].SetDirectionalLight(&mainLight);
 				light_changing += 0.1;
 				delay_daynight = 0.0f;
+
+				nowSkybox = { skyboxFaces.begin() + indexSkybox, skyboxFaces.begin() + indexSkybox + 6 };
+				skybox = Skybox(nowSkybox);
+				indexSkybox -= 6;
+
+
 
 				if (light_changing >= 1.0f)
 					day_flag = true;
