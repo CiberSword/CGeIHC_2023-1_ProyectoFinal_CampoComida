@@ -13,9 +13,9 @@ Window::Window(GLint windowWidth, GLint windowHeight)
 {
 	width = windowWidth;
 	height = windowHeight;
-	posx_bh = -60.0f;
-	elevacion_bh = 6.0f;
-	posz_bh = -1.0f;
+	posx_bh = 0.0f;
+	elevacion_bh = 0.0f;
+	posz_bh = 0.0f;
 	muevecofre2 = 2.0f;
 	avance_carro2 = 0.0f;
 	posz_carro2 = -20.0f;

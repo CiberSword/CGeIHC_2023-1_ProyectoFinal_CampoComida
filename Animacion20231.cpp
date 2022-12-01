@@ -43,7 +43,9 @@ const float toRadians = 3.14159265f / 180.0f;
 //variables para animación
 
 static float delay_daynight = 0.0f;
+static float delay_helper = 0.0f;
 static float light_changing = 1.0f;
+
 bool day_flag = true;
 int indexSkybox = 0.0f;
 
@@ -62,6 +64,11 @@ Texture plainTexture;
 Texture pisoTexture;
 Texture AgaveTexture;
 Texture FlechaTexture;
+
+// Modelos
+
+Model TrompoPastor_M;
+Model PuestoComida1_M;
 
 Skybox skybox;
 
@@ -210,6 +217,15 @@ int main()
 	pisoTexture.LoadTextureA();
 	FlechaTexture = Texture("Textures/flechas.tga");
 	FlechaTexture.LoadTextureA();
+
+	// Modelo trompo pastor
+
+	TrompoPastor_M = Model();
+	TrompoPastor_M.LoadModel("Models/TrompoPastor_M.obj");
+
+	PuestoComida1_M = Model();
+	PuestoComida1_M.LoadModel("Models/city_stall.3DS");
+
 
 	std::vector<std::string> skyboxFaces;
 	std::vector<std::string> nowSkybox;
@@ -367,6 +383,39 @@ int main()
 		meshList[2]->RenderMesh();
 				shaderList[0].SetDirectionalLight(&mainLight);
 
+		// RENDER TROMPOS DE PASTOR
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-372.0f, 0.0f, -342.0f));
+		//model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
+		// Para facilitar el acomodo de objetos, preguntar dudas
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		TrompoPastor_M.RenderModel();
+
+		// RENDER PUESTO COMIDA 1
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
+		//model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
+		// Para facilitar el acomodo de objetos, preguntar dudas
+		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//PuestoComida1_M.RenderModel();
+
+
+
+
+		//HELPER PARA COLOCAR OBJETOS
+		if (delay_helper >= 50.0f) {
+
+			//printf("\nEl objeto está en X: %f , Y: %f , Z: %f", mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh());
+			delay_helper = 0.0f;
+		}
+
+		delay_helper += deltaTime;
+
+
+
+
 		// SECCION PARA ANIMACIÓN
 
 		// Ciclado Dia-Noche de la luz direccional
@@ -402,7 +451,6 @@ int main()
 				nowSkybox = { skyboxFaces.begin() + indexSkybox, skyboxFaces.begin() + indexSkybox + 6 };
 				skybox = Skybox(nowSkybox);
 				indexSkybox -= 6;
-
 
 
 				if (light_changing >= 1.0f)
