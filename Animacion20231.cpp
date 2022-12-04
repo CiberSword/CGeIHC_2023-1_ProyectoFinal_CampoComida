@@ -83,6 +83,7 @@ Model FoodTruck_Ramen_M;
 Model FoodTruck_HotDogs_M;
 Model TruckHelado_M;
 Model FoodTruckPizza_M;
+Model People_M;
 
 Model Lamp1;
 Model Lamp2;
@@ -312,6 +313,8 @@ int main()
 	TruckHelado_M.LoadModel("Models/TruckHelado_M.obj");
 	FoodTruckPizza_M = Model();
 	FoodTruckPizza_M.LoadModel("Models/FoodTruckPizza_M.obj");
+	People_M = Model();
+	People_M.LoadModel("Models/People.obj");
 
 	Lamp1 = Model();
 	Lamp1.LoadModel("Models/Lamp1.obj");
@@ -583,7 +586,15 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Scenario_M.RenderModel();
 
-		// LAMPARAS
+		//RENDER PEOPLE 1
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(200.0f, 0.0f, 90.0f));
+		//model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
+		// Para facilitar el acomodo de objetos, preguntar dudas
+		//model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		People_M.RenderModel();
+
 
 		// RENDER LAMPARA 1
 		model = glm::mat4(1.0);
