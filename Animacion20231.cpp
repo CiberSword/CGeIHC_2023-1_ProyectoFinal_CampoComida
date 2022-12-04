@@ -69,6 +69,7 @@ Texture Anuncio1Texture;
 Texture Anuncio2Texture;
 Texture PantallaBack;
 Texture PantallaWhite;
+Texture AnuncioTexture;
 
 // Modelos
 Model TrompoPastor_M;
@@ -156,6 +157,13 @@ void CreateObjects()
 		3, 2, 6, 6, 7, 3
 	};
 
+	GLfloat animacion1Vertices[] = {
+		-1.0f, -1.0f, -0.6f,	0.0f, 0.0f,		0.0f, 0.0f, 0.0f,
+		0.0f, -1.0f, 1.0f,		0.005f, 0.0f,	0.0f, 0.0f, 0.0f,
+		1.0f, -1.0f, -0.6f,		0.005f, 1.0f,	0.0f, 0.0f, 0.0f,
+		0.0f, 1.0f, 0.0f,		0.0f, 1.0f,		0.0f, 0.0f, 0.0f
+	};
+
 	GLfloat pantallaVertices[] = {
 		-0.5f, -0.5f,  0.5f,	0.0f, 0.0f,		0.0f, 0.0f, 0.0f,
 		0.5f, -0.5f,  0.5f,		1.0f, 0.0f,		0.0f, 0.0f, 0.0f,
@@ -228,6 +236,11 @@ void CreateObjects()
 	Mesh* obj6 = new Mesh();
 	obj6->CreateMesh(pantallaVertices, imagenIndices, 64, 6);
 	meshList.push_back(obj6);
+
+	//textura en pantalla
+	Mesh* obj7 = new Mesh();
+	obj7->CreateMesh(animacion1Vertices, imagenIndices, 32, 6);
+	meshList.push_back(obj7);
 	
 }
 
@@ -270,6 +283,8 @@ int main()
 	PantallaBack.LoadTextureA();
 	PantallaWhite = Texture("Textures/fondoblanco.tga");
 	PantallaWhite.LoadTextureA();
+	AnuncioTexture = Texture("Textures/tituloProyecto.tga");
+	AnuncioTexture.LoadTextureA();
 
 	//Carga de modelos
 	TrompoPastor_M = Model();
@@ -546,7 +561,7 @@ int main()
 		model = glm::scale(model, glm::vec3(10.0f, 1.0f, 2.0f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Anuncio1Texture.UseTexture();
+		AnuncioTexture.UseTexture();
 		meshList[3]->RenderMesh();
 
 		////Textura de anuncio 2
