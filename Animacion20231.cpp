@@ -70,6 +70,8 @@ Texture FlechaTexture;
 Model TrompoPastor_M;
 Model PuestoComida1_M;
 Model FoodTruck1_M;
+Model PuestoBebidas_M;
+Model FoodTruck_Ramen_M;
 
 Skybox skybox;
 
@@ -227,8 +229,13 @@ int main()
 	PuestoComida1_M = Model();
 	PuestoComida1_M.LoadModel("Models/PuestoComida1_M.obj");
 
-	FoodTruck1_M = Model();
-	//FoodTruck1_M.LoadModel("Models/FoodTruck1_M.obj");
+	PuestoBebidas_M = Model();
+	PuestoBebidas_M.LoadModel("Models/PuestoBebidas_M.obj");
+
+	FoodTruck_Ramen_M = Model();
+	FoodTruck_Ramen_M.LoadModel("Models/FoodTruck_Ramen_M.obj");
+
+
 
 
 	std::vector<std::string> skyboxFaces;
@@ -390,25 +397,35 @@ int main()
 		// RENDER TROMPOS DE PASTOR
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-318.0f, 0.0f, -348.0f));
-		//model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
-		// Para facilitar el acomodo de objetos, preguntar dudas
 		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
 		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		TrompoPastor_M.RenderModel();
 
 		// RENDER PUESTO COMIDA 1
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-264.0f, 0.0f, -321.0f));
+		model = glm::scale(model, glm::vec3(0.7f, 0.7f, 0.7f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		PuestoComida1_M.RenderModel();
+
+		// RENDER PUESTO BEBIDAS
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(200.0f, 0.0f, 0.0f));
 		//model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
 		// Para facilitar el acomodo de objetos, preguntar dudas
 		model = glm::scale(model, glm::vec3(0.7f, 0.7f, 0.7f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
-		PuestoComida1_M.RenderModel();
+		PuestoBebidas_M.RenderModel();
 
-
+		// RENDER FOOD TRUCK RAMEN
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
+		// Para facilitar el acomodo de objetos, preguntar dudas
+		model = glm::scale(model, glm::vec3(0.35f, 0.35f, 0.35f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		FoodTruck_Ramen_M.RenderModel();
 
 
 		//HELPER PARA COLOCAR OBJETOS

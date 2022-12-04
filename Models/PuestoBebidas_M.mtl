@@ -1,0 +1,44 @@
+# 3ds Max Wavefront OBJ Exporter v0.99 - (c)2007 guruware
+# File Created: 03.12.2022 21:08:45
+
+newmtl 07___Default
+	Ns 10.000
+	Ni 1.500
+	d 1.000
+	Tr 0.000
+	Tf 1.000 1.000 1.000 
+	illum 2
+	Ka 0.588 0.588 0.588
+	Kd 0.588 0.588 0.588
+	Ks 0.000 0.000 0.000
+	Ke 0.000 0.000 0.000
+	map_Ka maps\AM246_090_Mobile_Juices_A_Diffuse.png
+	map_Kd maps\AM246_090_Mobile_Juices_A_Diffuse.png
+
+newmtl 08___Default
+	Ns 10.000
+	Ni 1.500
+	d 1.000
+	Tr 0.000
+	Tf 1.000 1.000 1.000 
+	illum 2
+	Ka 0.588 0.588 0.588
+	Kd 0.588 0.588 0.588
+	Ks 0.000 0.000 0.000
+	Ke 0.000 0.000 0.000
+	map_Ka maps\AM246_090_Mobile_Juices_B_Diffuse.png
+	map_Kd maps\AM246_090_Mobile_Juices_B_Diffuse.png
+
+newmtl 09___Default
+	Ns 10.000
+	Ni 1.500
+	d 1.000
+	Tr 0.000
+	Tf 1.000 1.000 1.000 
+	illum 2
+	Ka 0.588 0.588 0.588
+	Kd 0.588 0.588 0.588
+	Ks 0.000 0.000 0.000
+	Ke 0.000 0.000 0.000
+	map_Ka maps\AM246_090_Mobile_Juices_C_Diffuse.png
+	map_Kd maps\AM246_090_Mobile_Juices_C_Diffuse.png
