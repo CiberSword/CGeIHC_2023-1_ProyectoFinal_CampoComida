@@ -60,6 +60,8 @@ Texture plainTexture;
 Texture pisoTexture;
 Texture AgaveTexture;
 Texture FlechaTexture;
+Texture Anuncio1Texture;
+Texture Anuncio2Texture;
 
 Model Kitt_M;
 Model Llanta_M;
@@ -206,7 +208,6 @@ void CreateObjects()
 	Mesh* obj5 = new Mesh();
 	obj5->CreateMesh(flechaVertices, flechaIndices, 32, 6);
 	meshList.push_back(obj5);
-
 }
 
 
@@ -242,6 +243,11 @@ int main()
 	AgaveTexture.LoadTextureA();
 	FlechaTexture = Texture("Textures/flechas.tga");
 	FlechaTexture.LoadTextureA();
+	Anuncio1Texture = Texture("Textures/cafe.tga");
+	Anuncio1Texture.LoadTextureA();
+	Anuncio2Texture = Texture("Textures/negro.tga");
+	Anuncio2Texture.LoadTextureA();
+
 	Kitt_M = Model();
 	Kitt_M.LoadModel("Models/kitt_optimizado.obj");
 	Llanta_M = Model();
@@ -249,7 +255,7 @@ int main()
 	Blackhawk_M = Model();
 	Blackhawk_M.LoadModel("Models/uh60.obj");
 	Camino_M = Model();
-	Camino_M.LoadModel("Models/railroad track.obj");
+	Camino_M.LoadModel("Models/railroad track.obj");	
 
 
 	std::vector<std::string> skyboxFaces;
@@ -432,25 +438,42 @@ int main()
 		meshList[3]->RenderMesh();
 		
 
-		//textura con movimiento
-		//Importantes porque la variable uniform no podemos modificarla directamente
+		//textura con movimiento (1)
 		toffsetu += 0.001;
-		toffsetv += 0.0;
-		//para que no se desborde la variable
-		if (toffsetu > 1.0)
-			toffsetu = 0.0;
-		//if (toffsetv > 1.0)
-		//	toffsetv = 0;
-		//printf("\ntfosset %f \n", toffsetu);
-		//pasar a la variable uniform el valor actualizado
-		toffset = glm::vec2(toffsetu, toffsetv);
-
+		if (toffsetu > 1.0)toffsetu = 0.0;
+		toffset = glm::vec2(toffsetu, 0.0f);
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, 0.2f, -6.0f));
 		model = glm::rotate(model, 90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 2.0f));
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+
+
+		toffsetu += 0.0001;
+		if (toffsetu > 1.0) toffsetu = 0.0;
+		toffset = glm::vec2(toffsetu, 0.0f);
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 0.2f, -6.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(10.0f, 1.0f, 2.0f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Anuncio1Texture.UseTexture();
+		meshList[4]->RenderMesh();
+
+		//Textura con movimiento (2)
+		toffsetv += 0.0001;
+		if (toffsetv > 1.0) toffsetv = 0.0;
+		toffset = glm::vec2(0.0f, toffsetv);
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(15.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 10.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Anuncio2Texture.UseTexture();
+		meshList[4]->RenderMesh();
 		
 		FlechaTexture.UseTexture();
 		//Material_brillante.UseMaterial(uniformSpecularIntensity, uniformShininess);
