@@ -58,15 +58,17 @@ std::vector<Shader> shaderList;
 
 Camera camera;
 
+//Texturas
 Texture brickTexture;
 Texture dirtTexture;
 Texture plainTexture;
 Texture pisoTexture;
 Texture AgaveTexture;
 Texture FlechaTexture;
+Texture Anuncio1Texture;
+Texture Anuncio2Texture;
 
 // Modelos
-
 Model TrompoPastor_M;
 Model PuestoComida1_M;
 Model PuestoBebidas_M;
@@ -74,8 +76,9 @@ Model PuestoMariscos_M;
 
 Model FoodTruck1_M;
 Model FoodTruck_Ramen_M;
-Model BBQFoodTruck_M;
+Model FoodTruck_HotDogs_M;
 
+//Skybox
 Skybox skybox;
 
 //materiales
@@ -210,9 +213,9 @@ int main()
 
 	CreateObjects();
 	CreateShaders();
-
 	camera = Camera(glm::vec3(0.0f, 15.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), -60.0f, 0.0f, 2.5f, 0.5f);
 
+	//Carga de texturas
 	brickTexture = Texture("Textures/brick.png");
 	brickTexture.LoadTextureA();
 	dirtTexture = Texture("Textures/dirt.png");
@@ -223,15 +226,16 @@ int main()
 	pisoTexture.LoadTextureA();
 	FlechaTexture = Texture("Textures/flechas.tga");
 	FlechaTexture.LoadTextureA();
+	Anuncio1Texture = Texture("Textures/negro.tga");
+	Anuncio1Texture.LoadTextureA();
+	Anuncio2Texture = Texture("Textures/cafe.tga");
+	Anuncio2Texture.LoadTextureA();
 
-	// Modelo trompo pastor
-
+	//Carga de modelos
 	TrompoPastor_M = Model();
 	TrompoPastor_M.LoadModel("Models/TrompoPastor_M.obj");
-
 	PuestoComida1_M = Model();
 	PuestoComida1_M.LoadModel("Models/PuestoComida1_M.obj");
-
 	PuestoBebidas_M = Model();
 	PuestoBebidas_M.LoadModel("Models/PuestoBebidas_M.obj");
 
@@ -240,10 +244,8 @@ int main()
 
 	FoodTruck_Ramen_M = Model();
 	FoodTruck_Ramen_M.LoadModel("Models/FoodTruck_Ramen_M.obj");
-
-	BBQFoodTruck_M = Model();
-	BBQFoodTruck_M.LoadModel("Models/BBQFoodTruck_M.obj");
-
+	FoodTruck_HotDogs_M = Model();
+	FoodTruck_HotDogs_M.LoadModel("Models/FoodTruckHotDog_M.obj");
 
 	std::vector<std::string> skyboxFaces;
 	std::vector<std::string> nowSkybox;
@@ -399,7 +401,7 @@ int main()
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
 
 		meshList[2]->RenderMesh();
-				shaderList[0].SetDirectionalLight(&mainLight);
+		shaderList[0].SetDirectionalLight(&mainLight);
 
 		// RENDER TROMPOS DE PASTOR
 		model = glm::mat4(1.0);
@@ -442,6 +444,54 @@ int main()
 		model = glm::scale(model, glm::vec3(0.35f, 0.35f, 0.35f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		FoodTruck_Ramen_M.RenderModel();
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
+		model = glm::scale(model, glm::vec3(0.35f, 0.35f, 0.35f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		FoodTruck_Ramen_M.RenderModel();
+
+		//RENDER FOOD TRUCK HOTDOGS y hamburguesas
+
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-200.0f, 0.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
+		model = glm::scale(model, glm::vec3(2.5f, 2.5f, 2.5f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		FoodTruck_HotDogs_M.RenderModel();
+
+		//Acá todo lo de GL_BLEND (Texturas)
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+		//Textura de anuncio 1
+		toffsetu += 0.0001;
+		if (toffsetu > 1.0) toffsetu = 0.0;
+		toffset = glm::vec2(toffsetu, 0.0f);
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 0.2f, -6.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(10.0f, 1.0f, 2.0f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Anuncio1Texture.UseTexture();
+		meshList[3]->RenderMesh();
+
+		////Textura de anuncio 2
+		toffsetv += 0.0001;
+		if (toffsetv > 1.0) toffsetv = 0.0;
+		toffset = glm::vec2(0.0f, toffsetv);
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(15.0f, 0.0f, 0.0f));
+		model = glm::scale(model, glm::vec3(2.0f, 2.0f, 10.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Anuncio2Texture.UseTexture();
+		meshList[3]->RenderMesh();
+
+		glDisable(GL_BLEND);
 
 
 
