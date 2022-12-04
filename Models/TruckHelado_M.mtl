@@ -1,0 +1,25 @@
+# Exported from 3D Builder
+
+newmtl Mat_0
+Kd 1.000000 1.000000 1.000000
+map_Kd C:\Users\CiberSword\Desktop\DOCS_TAREAS_2023-1\LAB_COMPUTACION_GRAFICA\PROYECTO_FINAL\Lab_CGeIHC_2023-1_ProyectoFinal_CampoComida\Textures\texture_8_17026833529806663332.png
+
+newmtl Mat_1
+Kd 1.000000 1.000000 1.000000
+map_Kd C:\Users\CiberSword\Desktop\DOCS_TAREAS_2023-1\LAB_COMPUTACION_GRAFICA\PROYECTO_FINAL\Lab_CGeIHC_2023-1_ProyectoFinal_CampoComida\Textures\texture_0_6195987693227547908.png
+
+newmtl Mat_2
+Kd 1.000000 1.000000 1.000000
+map_Kd C:\Users\CiberSword\Desktop\DOCS_TAREAS_2023-1\LAB_COMPUTACION_GRAFICA\PROYECTO_FINAL\Lab_CGeIHC_2023-1_ProyectoFinal_CampoComida\Textures\texture_4_11563080508590297124.png
+
+newmtl Mat_3
+Kd 1.000000 1.000000 1.000000
+map_Kd C:\Users\CiberSword\Desktop\DOCS_TAREAS_2023-1\LAB_COMPUTACION_GRAFICA\PROYECTO_FINAL\Lab_CGeIHC_2023-1_ProyectoFinal_CampoComida\Textures\texture_20_13787955093972321256.png
+
+newmtl Mat_4
+Kd 1.000000 1.000000 1.000000
+map_Kd C:\Users\CiberSword\Desktop\DOCS_TAREAS_2023-1\LAB_COMPUTACION_GRAFICA\PROYECTO_FINAL\Lab_CGeIHC_2023-1_ProyectoFinal_CampoComida\Textures\texture_12_1535343169432686052.png
+
+newmtl Mat_5
+Kd 1.000000 1.000000 1.000000
+map_Kd C:\Users\CiberSword\Desktop\DOCS_TAREAS_2023-1\LAB_COMPUTACION_GRAFICA\PROYECTO_FINAL\Lab_CGeIHC_2023-1_ProyectoFinal_CampoComida\Textures\texture_16_12282369981943911396.png
