@@ -81,6 +81,8 @@ Model Scenario_M;
 Model FoodTruck1_M;
 Model FoodTruck_Ramen_M;
 Model FoodTruck_HotDogs_M;
+Model TruckHelado_M;
+Model FoodTruckPizza_M;
 Model People_M;
 
 //Skybox
@@ -304,6 +306,10 @@ int main()
 	FoodTruck_Ramen_M.LoadModel("Models/FoodTruck_Ramen_M.obj");
 	FoodTruck_HotDogs_M = Model();
 	FoodTruck_HotDogs_M.LoadModel("Models/FoodTruckHotDog_M.obj");
+	TruckHelado_M = Model();
+	TruckHelado_M.LoadModel("Models/TruckHelado_M.obj");
+	FoodTruckPizza_M = Model();
+	FoodTruckPizza_M.LoadModel("Models/FoodTruckPizza_M.obj");
 	People_M = Model();
 	People_M.LoadModel("Models/People.obj");
 
@@ -504,7 +510,7 @@ int main()
 		// RENDER PUESTO TORTAS
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(264.0f, 0.0f, 288.0f));
-		model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
+		//model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
 		// Para facilitar el acomodo de objetos, preguntar dudas
 		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
 		model = glm::rotate(model, -187 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
@@ -531,6 +537,26 @@ int main()
 		model = glm::rotate(model, 184 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		FoodTruck_HotDogs_M.RenderModel();
+
+		//RENDER TRUCK HELADO
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(51.0f, 0.0f, -315.0f));
+		//model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
+		// Para facilitar el acomodo de objetos, preguntar dudas
+		model = glm::scale(model, glm::vec3(0.3f, 0.3, 0.3f));
+		model = glm::rotate(model, 270 * toRadians, glm::vec3(1.0f, 0.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		TruckHelado_M.RenderModel();
+
+		//RENDER FOOD TRUCK PIZZA
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-327.0f, 0.0f, -33.0f));
+		//model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
+		// Para facilitar el acomodo de objetos, preguntar dudas
+		model = glm::scale(model, glm::vec3(2.0f, 2.0, 2.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		FoodTruckPizza_M.RenderModel();
 
 		//RENDER SCENARIO
 		model = glm::mat4(1.0);
