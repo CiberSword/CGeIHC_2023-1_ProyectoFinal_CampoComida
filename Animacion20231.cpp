@@ -84,6 +84,9 @@ Model FoodTruck_HotDogs_M;
 Model TruckHelado_M;
 Model FoodTruckPizza_M;
 
+Model Lamp1;
+Model Lamp2;
+
 //Skybox
 Skybox skybox;
 
@@ -310,7 +313,10 @@ int main()
 	FoodTruckPizza_M = Model();
 	FoodTruckPizza_M.LoadModel("Models/FoodTruckPizza_M.obj");
 
-
+	Lamp1 = Model();
+	Lamp1.LoadModel("Models/Lamp1.obj");
+	Lamp2 = Model();
+	Lamp2.LoadModel("Models/Lamp2.obj");
 
 	std::vector<std::string> skyboxFaces;
 	std::vector<std::string> nowSkybox;
@@ -393,15 +399,29 @@ int main()
 
 	//contador de luces puntuales
 	unsigned int pointLightCount = 0;
+
+	// Lampara calle 1
+	pointLights[0] = PointLight(1.0f, 1.0f, 1.0f,
+		10000.0f, 10000.0f,
+		-167.0f, 130.0f, -189.0f,
+		2.0f, 2.0f, 1.0f);
+	pointLightCount++;
+
+	// Lampara calle 2
+	pointLights[1] = PointLight(1.0f, 1.0f, 1.0f,
+		10000.0f, 10000.0f,
+		-167.0f, 100.0f, 120.0f,
+		2.0f, 2.0f, 1.0f);
+	pointLightCount++;
+
+	// Lampara calle 3
+	pointLights[2] = PointLight(1.0f, 1.0f, 1.0f,
+		15000.0f, 10000.0f,
+		237.0f, 100.0f, -30.0f,
+		2.0f, 2.0f, 1.0f);
+	pointLightCount++;
+
 	unsigned int spotLightCount = 0;
-	//linterna
-	spotLights[0] = SpotLight(1.0f, 1.0f, 1.0f,
-		0.0f, 2.0f,
-		0.0f, 0.0f, 0.0f,
-		0.0f, -1.0f, 0.0f,
-		1.0f, 0.0f, 0.0f,
-		5.0f);
-	spotLightCount++;
 
 	GLuint uniformProjection = 0, uniformModel = 0, uniformView = 0, uniformEyePosition = 0,
 		uniformSpecularIntensity = 0, uniformShininess = 0, uniformTextureOffset=0;
@@ -448,7 +468,6 @@ int main()
 		spotLights[0].SetFlash(lowerLight, camera.getCameraDirection());
 
 		//información al shader de fuentes de iluminación
-		shaderList[0].SetPointLights(pointLights, pointLightCount);
 		shaderList[0].SetSpotLights(spotLights, spotLightCount);
 
 		glm::mat4 model(1.0);
@@ -564,6 +583,43 @@ int main()
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Scenario_M.RenderModel();
 
+		// LAMPARAS
+
+		// RENDER LAMPARA 1
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-222.0f, 0.0f, -189.0f));
+		//model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
+		// Para facilitar el acomodo de objetos, preguntar dudas
+		model = glm::scale(model, glm::vec3(0.04f, 0.07f, 0.04f));
+		model = glm::rotate(model, -270 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Lamp1.RenderModel();
+
+		// RENDER LAMPARA 2
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(-222.0f, 0.0f, 120.0f));
+		//model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
+		// Para facilitar el acomodo de objetos, preguntar dudas
+		model = glm::scale(model, glm::vec3(0.04f, 0.07f, 0.04f));
+		model = glm::rotate(model, -270 * toRadians, glm::vec3(0.0f, 0.0f, 1.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Lamp1.RenderModel();
+
+		// RENDER LAMPARA DOBLE
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(237.0f, 0.0f, -30.0f));
+		model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
+		// Para facilitar el acomodo de objetos, preguntar dudas
+		model = glm::scale(model, glm::vec3(5.0f, 5.0f, 5.0f));
+		model = glm::rotate(model, 90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		Lamp2.RenderModel();
+
+
+
+
 
 		//Modelo textura con openGL pantalla
 		model = glm::mat4(1.0);
@@ -629,47 +685,50 @@ int main()
 
 
 		// Ciclado Dia-Noche de la luz direccional
-			if (delay_daynight >= 500.0f && day_flag == true) {
+		if (delay_daynight >= 360.0f && day_flag == true) {
 
-				mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
-					light_changing, light_changing,
-					0.0f, 0.0f, -1.0f);
-				shaderList[0].SetDirectionalLight(&mainLight);
-				light_changing -= 0.1;
-				delay_daynight = 0.0f;
-				
-				nowSkybox = { skyboxFaces.begin() + indexSkybox, skyboxFaces.begin() + indexSkybox + 6 };
-				skybox = Skybox(nowSkybox);
-				indexSkybox += 6;
+			mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
+				light_changing, light_changing,
+				0.0f, 0.0f, -1.0f);
+			shaderList[0].SetDirectionalLight(&mainLight);
+			light_changing -= 0.1;
+			delay_daynight = 0.0f;
+			
+			nowSkybox = { skyboxFaces.begin() + indexSkybox, skyboxFaces.begin() + indexSkybox + 6 };
+			skybox = Skybox(nowSkybox);
+			indexSkybox += 6;
 
+			if (light_changing <= 0.3)
+				shaderList[0].SetPointLights(pointLights, pointLightCount);
 
-				if (light_changing <= 0.1)
-					day_flag = false;
+			if (light_changing <= 0.1)
+				day_flag = false;
 
-			}
+		}
 
-			if (delay_daynight >= 500.0f && day_flag == false) {
+		if (delay_daynight >= 360.0f && day_flag == false) {
 
-				mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
-					light_changing, light_changing,
-					0.0f, 0.0f, -1.0f);
-				shaderList[0].SetDirectionalLight(&mainLight);
-				light_changing += 0.1;
-				delay_daynight = 0.0f;
+			mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
+				light_changing, light_changing,
+				0.0f, 0.0f, -1.0f);
+			shaderList[0].SetDirectionalLight(&mainLight);
+			light_changing += 0.1;
+			delay_daynight = 0.0f;
 
-				nowSkybox = { skyboxFaces.begin() + indexSkybox, skyboxFaces.begin() + indexSkybox + 6 };
-				skybox = Skybox(nowSkybox);
-				indexSkybox -= 6;
+			nowSkybox = { skyboxFaces.begin() + indexSkybox, skyboxFaces.begin() + indexSkybox + 6 };
+			skybox = Skybox(nowSkybox);
+			indexSkybox -= 6;
 
+			if (light_changing >= 0.4)
+				shaderList[0].SetPointLights(pointLights, 0);
 
-				if (light_changing >= 1.0f)
-					day_flag = true;
-			}
+			if (light_changing >= 1.0f)
+				day_flag = true;
+		}
 
-			delay_daynight += deltaTime;
+		delay_daynight += deltaTime;
 
-		
-
+	
 		glUseProgram(0);
 
 		mainWindow.swapBuffers();
