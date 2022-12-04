@@ -67,6 +67,8 @@ Texture AgaveTexture;
 Texture FlechaTexture;
 Texture Anuncio1Texture;
 Texture Anuncio2Texture;
+Texture PantallaBack;
+Texture PantallaWhite;
 
 // Modelos
 Model TrompoPastor_M;
@@ -145,6 +147,27 @@ void CreateObjects()
 		0, 1, 2
 	};
 
+	unsigned int pantallaIndices[] = {
+		0, 1, 2, 2, 3, 0, 1, 5, 6, 6, 2, 1, 7, 6, 5,
+		5, 4, 7, 4, 0, 3, 3, 7, 4, 4, 5, 1, 1, 0, 4
+	};
+
+	unsigned int imagenIndices[] = { //Plano top
+		3, 2, 6, 6, 7, 3
+	};
+
+	GLfloat pantallaVertices[] = {
+		-0.5f, -0.5f,  0.5f,	0.0f, 0.0f,		0.0f, 0.0f, 0.0f,
+		0.5f, -0.5f,  0.5f,		1.0f, 0.0f,		0.0f, 0.0f, 0.0f,
+		0.5f,  0.5f,  0.5f,		1.0f, 1.0f,		0.0f, 0.0f, 0.0f,
+		-0.5f,  0.5f,  0.5f,	0.0f, 1.0f,		0.0f, 0.0f, 0.0f,
+
+		-0.5f, -0.5f, -0.5f,	0.0f, 0.0f,		0.0f, 0.0f, 0.0f,
+		0.5f, -0.5f, -0.5f,		1.0f, 0.0f,		0.0f, 0.0f, 0.0f,
+		0.5f,  0.5f, -0.5f,		1.0f, 1.0f,		0.0f, 0.0f, 0.0f,
+		-0.5f,  0.5f, -0.5f, 	0.0f, 1.0f,		0.0f, 0.0f, 0.0f,
+	};
+
 	GLfloat vertices[] = {
 		//	x      y      z			u	  v			nx	  ny    nz
 			-1.0f, -1.0f, -0.6f,	0.0f, 0.0f,		0.0f, 0.0f, 0.0f,
@@ -186,14 +209,26 @@ void CreateObjects()
 	obj2->CreateMesh(vertices, indices, 32, 12);
 	meshList.push_back(obj2);
 
+	//textura piso
 	Mesh *obj3 = new Mesh();
 	obj3->CreateMesh(floorVertices, floorIndices, 32, 6);
 	meshList.push_back(obj3);
 
+	//textura anuncio 2
 	Mesh* obj4 = new Mesh();
 	obj4->CreateMesh(flechaVertices, flechaIndices, 32, 6);
 	meshList.push_back(obj4);
 
+	//textura de pantalla cubo
+	Mesh* obj5 = new Mesh();
+	obj5->CreateMesh(pantallaVertices, pantallaIndices, 64, 30);
+	meshList.push_back(obj5);
+
+	//textura de pantalla
+	Mesh* obj6 = new Mesh();
+	obj6->CreateMesh(pantallaVertices, imagenIndices, 64, 6);
+	meshList.push_back(obj6);
+	
 }
 
 
@@ -231,6 +266,10 @@ int main()
 	Anuncio1Texture.LoadTextureA();
 	Anuncio2Texture = Texture("Textures/cafe.tga");
 	Anuncio2Texture.LoadTextureA();
+	PantallaBack = Texture("Textures/fondonegro.tga");
+	PantallaBack.LoadTextureA();
+	PantallaWhite = Texture("Textures/fondoblanco.tga");
+	PantallaWhite.LoadTextureA();
 
 	//Carga de modelos
 	TrompoPastor_M = Model();
@@ -396,6 +435,8 @@ int main()
 		glm::vec3 color = glm::vec3(1.0f, 1.0f, 1.0f);
 		glm::vec2 toffset = glm::vec2(0.0f, 0.0f);
 
+
+		//modelo de piso
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(0.0f, -2.0f, 0.0f));
 		model = glm::scale(model, glm::vec3(30.0f, 1.0f, 30.0f));
@@ -404,7 +445,6 @@ int main()
 		glUniform2fv(uniformTextureOffset, 1, glm::value_ptr(toffset));
 		pisoTexture.UseTexture();
 		Material_opaco.UseMaterial(uniformSpecularIntensity, uniformShininess);
-
 		meshList[2]->RenderMesh();
 		shaderList[0].SetDirectionalLight(&mainLight);
 
@@ -468,12 +508,30 @@ int main()
 		FoodTruck_HotDogs_M.RenderModel();
 
 		//RENDER SCENARIO
-		model = glm::mat4(1.0);
+		/*model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-200.0f, 0.0f, 0.0f));
 		model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		Scenario_M.RenderModel();
+		Scenario_M.RenderModel();*/
+
+
+		//Modelo textura con openGL pantalla
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 10.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
+		model = glm::scale(model, glm::vec3(10.0f, 2.0f, 5.0f));
+		PantallaBack.UseTexture();
+		meshList[4]->RenderMesh();
+
+		//imagen
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(0.0f, 10.0f, 2.25f));
+		model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
+		model = glm::scale(model, glm::vec3(10.0f, 0.5f, 5.0f));
+		PantallaWhite.UseTexture();
+		meshList[5]->RenderMesh();
+
 
 		//Acá todo lo de GL_BLEND (Texturas)
 		glEnable(GL_BLEND);
