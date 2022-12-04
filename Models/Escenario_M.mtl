@@ -1,0 +1,30 @@
+# 3ds Max Wavefront OBJ Exporter v0.99 - (c)2007 guruware
+# File Created: 04.12.2022 12:07:04
+
+newmtl model_object_1
+	Ns 9.849
+	Ni 1.500
+	d 1.000
+	Tr 0.000
+	Tf 1.000 1.000 1.000 
+	illum 2
+	Ka 0.000 0.000 0.000
+	Kd 0.698 0.698 0.698
+	Ks 0.000 0.000 0.000
+	Ke 0.000 0.000 0.000
+	map_Ka maps\RGB_64047bff951f424882b96cce2c06d0f2_Toit_Indoor_Stadium_-_Allegiant_d.png
+	map_Kd maps\RGB_64047bff951f424882b96cce2c06d0f2_Toit_Indoor_Stadium_-_Allegiant_d.png
+
+newmtl model_object_0
+	Ns 9.849
+	Ni 1.500
+	d 1.000
+	Tr 0.000
+	Tf 1.000 1.000 1.000 
+	illum 2
+	Ka 0.000 0.000 0.000
+	Kd 0.698 0.698 0.698
+	Ks 0.000 0.000 0.000
+	Ke 0.000 0.000 0.000
+	map_Ka maps\RGB_12c27875c55c40d89efbeb5c130dc210_Allegiant_Stadium_d.png
+	map_Kd maps\RGB_12c27875c55c40d89efbeb5c130dc210_Allegiant_Stadium_d.png
