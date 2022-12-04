@@ -81,6 +81,7 @@ Model Scenario_M;
 Model FoodTruck1_M;
 Model FoodTruck_Ramen_M;
 Model FoodTruck_HotDogs_M;
+Model People_M;
 
 //Skybox
 Skybox skybox;
@@ -303,6 +304,8 @@ int main()
 	FoodTruck_Ramen_M.LoadModel("Models/FoodTruck_Ramen_M.obj");
 	FoodTruck_HotDogs_M = Model();
 	FoodTruck_HotDogs_M.LoadModel("Models/FoodTruckHotDog_M.obj");
+	People_M = Model();
+	People_M.LoadModel("Models/People.obj");
 
 
 
@@ -537,6 +540,15 @@ int main()
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
 		Scenario_M.RenderModel();
+
+		//RENDER PEOPLE 1
+		model = glm::mat4(1.0);
+		model = glm::translate(model, glm::vec3(200.0f, 0.0f, 90.0f));
+		//model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
+		// Para facilitar el acomodo de objetos, preguntar dudas
+		//model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
+		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		People_M.RenderModel();
 
 
 		//Modelo textura con openGL pantalla
