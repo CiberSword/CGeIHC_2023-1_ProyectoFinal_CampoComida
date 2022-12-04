@@ -414,23 +414,23 @@ int main()
 		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
 		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//TrompoPastor_M.RenderModel();
+		TrompoPastor_M.RenderModel();
 
 		// RENDER PUESTO COMIDA 1
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-264.0f, 0.0f, -321.0f));
 		model = glm::scale(model, glm::vec3(0.7f, 0.7f, 0.7f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//PuestoComida1_M.RenderModel();
+		PuestoComida1_M.RenderModel();
 
 		// RENDER PUESTO BEBIDAS
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(200.0f, 0.0f, 0.0f));
-		model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
+		model = glm::translate(model, glm::vec3(200.0f, 0.0f, 100.0f));
+		//model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
 		// Para facilitar el acomodo de objetos, preguntar dudas
 		model = glm::scale(model, glm::vec3(0.7f, 0.7f, 0.7f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//PuestoBebidas_M.RenderModel();
+		PuestoBebidas_M.RenderModel();
 
 		// RENDER PUESTO MARISCOS
 		model = glm::mat4(1.0);
@@ -439,12 +439,12 @@ int main()
 		// Para facilitar el acomodo de objetos, preguntar dudas
 		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//PuestoMariscos_M.RenderModel();
+		PuestoMariscos_M.RenderModel();
 
 		// RENDER PUESTO TORTAS
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, -3.0f, 100.0f));
-		model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
+		model = glm::translate(model, glm::vec3(0.0f, -3.0f, -200.0f));
+		//model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
 		// Para facilitar el acomodo de objetos, preguntar dudas
 		model = glm::scale(model, glm::vec3(6.0f, 6.0f, 6.0f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
@@ -452,20 +452,20 @@ int main()
 
 		// RENDER FOOD TRUCK RAMEN
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(200.0f, 0.0f, 0.0f));
 		//model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
 		// Para facilitar el acomodo de objetos, preguntar dudas
 		model = glm::scale(model, glm::vec3(0.35f, 0.35f, 0.35f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//FoodTruck_Ramen_M.RenderModel();
+		FoodTruck_Ramen_M.RenderModel();
 
 		//RENDER FOOD TRUCK HOTDOGS y hamburguesaS
 		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-200.0f, 0.0f, 0.0f));
+		model = glm::translate(model, glm::vec3(-200.0f, 0.0f, -200.0f));
 		model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
 		model = glm::scale(model, glm::vec3(2.5f, 2.5f, 2.5f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//FoodTruck_HotDogs_M.RenderModel();
+		FoodTruck_HotDogs_M.RenderModel();
 
 		//RENDER SCENARIO
 		model = glm::mat4(1.0);
@@ -473,7 +473,7 @@ int main()
 		model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
 		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		//Scenario_M.RenderModel();
+		Scenario_M.RenderModel();
 
 		//Acá todo lo de GL_BLEND (Texturas)
 		glEnable(GL_BLEND);
