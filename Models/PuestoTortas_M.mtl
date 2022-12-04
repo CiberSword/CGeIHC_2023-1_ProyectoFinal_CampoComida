@@ -1,0 +1,350 @@
+# 3ds Max Wavefront OBJ Exporter v0.99 - (c)2007 guruware
+# File Created: 04.12.2022 13:08:33
+
+newmtl model_object_0
+	Ns 9.849
+	Ni 1.500
+	d 1.000
+	Tr 0.000
+	Tf 1.000 1.000 1.000 
+	illum 2
+	Ka 0.000 0.000 0.000
+	Kd 0.698 0.698 0.698
+	Ks 0.000 0.000 0.000
+	Ke 0.000 0.000 0.000
+	map_Ka maps\E_agua_ALB.png
+	map_Kd maps\E_agua_ALB.png
+
+newmtl model_object_1
+	Ns 9.849
+	Ni 1.500
+	d 1.000
+	Tr 0.000
+	Tf 1.000 1.000 1.000 
+	illum 2
+	Ka 0.000 0.000 0.000
+	Kd 0.698 0.698 0.698
+	Ks 0.000 0.000 0.000
+	Ke 0.000 0.000 0.000
+	map_Ka maps\botella_ALB_limon.png
+	map_Kd maps\botella_ALB_limon.png
+
+newmtl model_object_2
+	Ns 9.849
+	Ni 1.500
+	d 1.000
+	Tr 0.000
+	Tf 1.000 1.000 1.000 
+	illum 2
+	Ka 0.000 0.000 0.000
+	Kd 0.698 0.698 0.698
+	Ks 0.000 0.000 0.000
+	Ke 0.000 0.000 0.000
+	map_Ka maps\bolsa_basura_ALB.png
+	map_Kd maps\bolsa_basura_ALB.png
+
+newmtl model_object_3
+	Ns 9.849
+	Ni 1.500
+	d 1.000
+	Tr 0.000
+	Tf 1.000 1.000 1.000 
+	illum 2
+	Ka 0.000 0.000 0.000
+	Kd 0.698 0.698 0.698
+	Ks 0.000 0.000 0.000
+	Ke 0.000 0.000 0.000
+	map_Ka maps\bote_ALB.png
+	map_Kd maps\bote_ALB.png
+
+newmtl model_object_4
+	Ns 9.849
+	Ni 1.500
+	d 1.000
+	Tr 0.000
+	Tf 1.000 1.000 1.000 
+	illum 2
+	Ka 0.000 0.000 0.000
+	Kd 0.698 0.698 0.698
+	Ks 0.000 0.000 0.000
+	Ke 0.000 0.000 0.000
+	map_Ka maps\accesorios2_ALB.png
+	map_Kd maps\accesorios2_ALB.png
+
+newmtl model_object_5
+	Ns 9.849
+	Ni 1.500
+	d 1.000
+	Tr 0.000
+	Tf 1.000 1.000 1.000 
+	illum 2
+	Ka 0.000 0.000 0.000
+	Kd 0.698 0.698 0.698
+	Ks 0.000 0.000 0.000
+	Ke 0.000 0.000 0.000
+	map_Ka maps\base_ALB.png
+	map_Kd maps\base_ALB.png
+
+newmtl sarte
+	Ns 9.849
+	Ni 1.500
+	d 1.000
+	Tr 0.000
+	Tf 1.000 1.000 1.000 
+	illum 2
+	Ka 0.000 0.000 0.000
+	Kd 0.698 0.698 0.698
+	Ks 0.000 0.000 0.000
+	Ke 0.000 0.000 0.000
+	map_Ka maps\cazo_sarten_ALB.png
+	map_Kd maps\cazo_sarten_ALB.png
+
+newmtl extintor
+	Ns 9.849
+	Ni 1.500
+	d 1.000
+	Tr 0.000
+	Tf 1.000 1.000 1.000 
+	illum 2
+	Ka 0.000 0.000 0.000
+	Kd 0.698 0.698 0.698
+	Ks 0.000 0.000 0.000
+	Ke 0.000 0.000 0.000
+	map_Ka maps\extintor_ALB.png
+	map_Kd maps\extintor_ALB.png
+
+newmtl model_object_20
+	Ns 9.849
+	Ni 1.500
+	d 1.000
+	Tr 0.000
+	Tf 1.000 1.000 1.000 
+	illum 2
+	Ka 0.000 0.000 0.000
+	Kd 0.698 0.698 0.698
+	Ks 0.000 0.000 0.000
+	Ke 0.000 0.000 0.000
+	map_Ka maps\banco_blue_ALB.png
+	map_Kd maps\banco_blue_ALB.png
+
+newmtl model_object_21
+	Ns 9.849
+	Ni 1.500
+	d 1.000
+	Tr 0.000
+	Tf 1.000 1.000 1.000 
+	illum 2
+	Ka 0.000 0.000 0.000
+	Kd 0.698 0.698 0.698
+	Ks 0.000 0.000 0.000
+	Ke 0.000 0.000 0.000
+	map_Ka maps\banco_green_ALB.png
+	map_Kd maps\banco_green_ALB.png
+
+newmtl model_object_22
+	Ns 9.849
+	Ni 1.500
+	d 1.000
+	Tr 0.000
+	Tf 1.000 1.000 1.000 
+	illum 2
+	Ka 0.000 0.000 0.000
+	Kd 0.698 0.698 0.698
+	Ks 0.000 0.000 0.000
+	Ke 0.000 0.000 0.000
+	map_Ka maps\banco_orange_ALB.png
+	map_Kd maps\banco_orange_ALB.png
+
+newmtl model_object_12
+	Ns 9.849
+	Ni 1.500
+	d 1.000
+	Tr 0.000
+	Tf 1.000 1.000 1.000 
+	illum 2
+	Ka 0.000 0.000 0.000
+	Kd 0.698 0.698 0.698
+	Ks 0.000 0.000 0.000
+	Ke 0.000 0.000 0.000
+	map_Ka maps\E_Naranjada_ALB.png
+	map_Kd maps\E_Naranjada_ALB.png
+
+newmtl model_object_23
+	Ns 9.849
+	Ni 1.500
+	d 1.000
+	Tr 0.000
+	Tf 1.000 1.000 1.000 
+	illum 2
+	Ka 0.000 0.000 0.000
+	Kd 0.698 0.698 0.698
+	Ks 0.000 0.000 0.000
+	Ke 0.000 0.000 0.000
+	map_Ka maps\banco_red_ALB.png
+	map_Kd maps\banco_red_ALB.png
+
+newmtl model_object_19
+	Ns 9.849
+	Ni 1.500
+	d 1.000
+	Tr 0.000
+	Tf 1.000 1.000 1.000 
+	illum 2
+	Ka 0.000 0.000 0.000
+	Kd 0.698 0.698 0.698
+	Ks 0.000 0.000 0.000
+	Ke 0.000 0.000 0.000
+	map_Ka maps\banco_white_ALB.png
+	map_Kd maps\banco_white_ALB.png
+
+newmtl model_object_18
+	Ns 9.849
+	Ni 1.500
+	d 1.000
+	Tr 0.000
+	Tf 1.000 1.000 1.000 
+	illum 2
+	Ka 0.000 0.000 0.000
+	Kd 0.698 0.698 0.698
+	Ks 0.000 0.000 0.000
+	Ke 0.000 0.000 0.000
+	map_Ka maps\cilindro_gas_ALB.png
+	map_Kd maps\cilindro_gas_ALB.png
+
+newmtl bot
+	Ns 9.849
+	Ni 1.500
+	d 1.000
+	Tr 0.000
+	Tf 1.000 1.000 1.000 
+	illum 2
+	Ka 0.000 0.000 0.000
+	Kd 0.698 0.698 0.698
+	Ks 0.000 0.000 0.000
+	Ke 0.000 0.000 0.000
+	map_Ka maps\cubierta_ALB.png
+	map_Kd maps\cubierta_ALB.png
+
+newmtl model_object_25
+	Ns 9.849
+	Ni 1.500
+	d 1.000
+	Tr 0.000
+	Tf 1.000 1.000 1.000 
+	illum 2
+	Ka 0.000 0.000 0.000
+	Kd 0.698 0.698 0.698
+	Ks 0.000 0.000 0.000
+	Ke 0.000 0.000 0.000
+
+newmtl model_object_29
+	Ns 9.849
+	Ni 1.500
+	d 1.000
+	Tr 0.000
+	Tf 1.000 1.000 1.000 
+	illum 2
+	Ka 0.000 0.000 0.000
+	Kd 0.698 0.698 0.698
+	Ks 0.000 0.000 0.000
+	Ke 0.000 0.000 0.000
+
+newmtl model_object_30
+	Ns 9.849
+	Ni 1.500
+	d 1.000
+	Tr 0.000
+	Tf 1.000 1.000 1.000 
+	illum 2
+	Ka 0.000 0.000 0.000
+	Kd 0.698 0.698 0.698
+	Ks 0.000 0.000 0.000
+	Ke 0.000 0.000 0.000
+
+newmtl model_object_34
+	Ns 9.849
+	Ni 1.500
+	d 1.000
+	Tr 0.000
+	Tf 1.000 1.000 1.000 
+	illum 2
+	Ka 0.000 0.000 0.000
+	Kd 0.698 0.698 0.698
+	Ks 0.000 0.000 0.000
+	Ke 0.000 0.000 0.000
+
+newmtl z
+	Ns 9.849
+	Ni 1.500
+	d 1.000
+	Tr 0.000
+	Tf 1.000 1.000 1.000 
+	illum 2
+	Ka 0.000 0.000 0.000
+	Kd 0.698 0.698 0.698
+	Ks 0.000 0.000 0.000
+	Ke 0.000 0.000 0.000
+	map_Ka maps\parte_media_ALB.png
+	map_Kd maps\parte_media_ALB.png
+
+newmtl model_object_40
+	Ns 9.849
+	Ni 1.500
+	d 1.000
+	Tr 0.000
+	Tf 1.000 1.000 1.000 
+	illum 2
+	Ka 0.000 0.000 0.000
+	Kd 0.698 0.698 0.698
+	Ks 0.000 0.000 0.000
+	Ke 0.000 0.000 0.000
+
+newmtl model_object_41
+	Ns 9.849
+	Ni 1.500
+	d 1.000
+	Tr 0.000
+	Tf 1.000 1.000 1.000 
+	illum 2
+	Ka 0.000 0.000 0.000
+	Kd 0.698 0.698 0.698
+	Ks 0.000 0.000 0.000
+	Ke 0.000 0.000 0.000
+
+newmtl model_object_42
+	Ns 9.849
+	Ni 1.500
+	d 1.000
+	Tr 0.000
+	Tf 1.000 1.000 1.000 
+	illum 2
+	Ka 0.000 0.000 0.000
+	Kd 0.698 0.698 0.698
+	Ks 0.000 0.000 0.000
+	Ke 0.000 0.000 0.000
+
+newmtl accs
+	Ns 9.849
+	Ni 1.500
+	d 1.000
+	Tr 0.000
+	Tf 1.000 1.000 1.000 
+	illum 2
+	Ka 0.000 0.000 0.000
+	Kd 0.698 0.698 0.698
+	Ks 0.000 0.000 0.000
+	Ke 0.000 0.000 0.000
+	map_Ka maps\accesorios_ALB.png
+	map_Kd maps\accesorios_ALB.png
+
+newmtl model_object_46
+	Ns 9.849
+	Ni 1.500
+	d 1.000
+	Tr 0.000
+	Tf 1.000 1.000 1.000 
+	illum 2
+	Ka 0.000 0.000 0.000
+	Kd 0.698 0.698 0.698
+	Ks 0.000 0.000 0.000
+	Ke 0.000 0.000 0.000
