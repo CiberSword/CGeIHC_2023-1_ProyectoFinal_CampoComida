@@ -73,7 +73,7 @@ Model TrompoPastor_M;
 Model PuestoComida1_M;
 Model PuestoBebidas_M;
 Model PuestoMariscos_M;
-
+Model Scenario_M;
 Model FoodTruck1_M;
 Model FoodTruck_Ramen_M;
 Model FoodTruck_HotDogs_M;
@@ -238,10 +238,10 @@ int main()
 	PuestoComida1_M.LoadModel("Models/PuestoComida1_M.obj");
 	PuestoBebidas_M = Model();
 	PuestoBebidas_M.LoadModel("Models/PuestoBebidas_M.obj");
-
 	PuestoMariscos_M = Model();
 	PuestoMariscos_M.LoadModel("Models/PuestoMariscos_M.obj");
-
+	Scenario_M = Model();
+	Scenario_M.LoadModel("Models/Escenario_M.obj");
 	FoodTruck_Ramen_M = Model();
 	FoodTruck_Ramen_M.LoadModel("Models/FoodTruck_Ramen_M.obj");
 	FoodTruck_HotDogs_M = Model();
@@ -404,62 +404,70 @@ int main()
 		shaderList[0].SetDirectionalLight(&mainLight);
 
 		// RENDER TROMPOS DE PASTOR
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-318.0f, 0.0f, -348.0f));
-		model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
-		model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		TrompoPastor_M.RenderModel();
+		//model = glm::mat4(1.0);
+		//model = glm::translate(model, glm::vec3(-318.0f, 0.0f, -348.0f));
+		//model = glm::scale(model, glm::vec3(1.0f, 1.0f, 1.0f));
+		//model = glm::rotate(model, -90 * toRadians, glm::vec3(0.0f, 1.0f, 0.0f));
+		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//TrompoPastor_M.RenderModel();
 
-		// RENDER PUESTO COMIDA 1
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(-264.0f, 0.0f, -321.0f));
-		model = glm::scale(model, glm::vec3(0.7f, 0.7f, 0.7f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		PuestoComida1_M.RenderModel();
+		//// RENDER PUESTO COMIDA 1
+		//model = glm::mat4(1.0);
+		//model = glm::translate(model, glm::vec3(-264.0f, 0.0f, -321.0f));
+		//model = glm::scale(model, glm::vec3(0.7f, 0.7f, 0.7f));
+		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//PuestoComida1_M.RenderModel();
 
-		// RENDER PUESTO BEBIDAS
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(200.0f, 0.0f, 0.0f));
+		//// RENDER PUESTO BEBIDAS
+		//model = glm::mat4(1.0);
+		//model = glm::translate(model, glm::vec3(200.0f, 0.0f, 0.0f));
+		////model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
+		//// Para facilitar el acomodo de objetos, preguntar dudas
+		//model = glm::scale(model, glm::vec3(0.7f, 0.7f, 0.7f));
+		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//PuestoBebidas_M.RenderModel();
+
+		//// RENDER PUESTO MARISCOS
+		//model = glm::mat4(1.0);
+		//model = glm::translate(model, glm::vec3(0.0f, -3.0f, 100.0f));
 		//model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
-		// Para facilitar el acomodo de objetos, preguntar dudas
-		model = glm::scale(model, glm::vec3(0.7f, 0.7f, 0.7f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		PuestoBebidas_M.RenderModel();
+		//// Para facilitar el acomodo de objetos, preguntar dudas
+		//model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
+		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//PuestoMariscos_M.RenderModel();
 
-		// RENDER PUESTO MARISCOS
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, -3.0f, 100.0f));
-		model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
-		// Para facilitar el acomodo de objetos, preguntar dudas
-		model = glm::scale(model, glm::vec3(3.0f, 3.0f, 3.0f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		PuestoMariscos_M.RenderModel();
+		//// RENDER FOOD TRUCK RAMEN
+		//model = glm::mat4(1.0);
+		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
+		////model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
+		//// Para facilitar el acomodo de objetos, preguntar dudas
+		//model = glm::scale(model, glm::vec3(0.35f, 0.35f, 0.35f));
+		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//FoodTruck_Ramen_M.RenderModel();
 
-		// RENDER FOOD TRUCK RAMEN
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
+		////RENDER FOOD TRUCK
+		//model = glm::mat4(1.0);
+		//model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
 		//model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
-		// Para facilitar el acomodo de objetos, preguntar dudas
-		model = glm::scale(model, glm::vec3(0.35f, 0.35f, 0.35f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		FoodTruck_Ramen_M.RenderModel();
+		//model = glm::scale(model, glm::vec3(0.35f, 0.35f, 0.35f));
+		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//FoodTruck_Ramen_M.RenderModel();
 
-		model = glm::mat4(1.0);
-		model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
-		model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
-		model = glm::scale(model, glm::vec3(0.35f, 0.35f, 0.35f));
-		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		FoodTruck_Ramen_M.RenderModel();
+		////RENDER FOOD TRUCK HOTDOGS y hamburguesaS
+		//model = glm::mat4(1.0);
+		//model = glm::translate(model, glm::vec3(-200.0f, 0.0f, 0.0f));
+		//model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
+		//model = glm::scale(model, glm::vec3(2.5f, 2.5f, 2.5f));
+		//glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
+		//FoodTruck_HotDogs_M.RenderModel();
 
-		//RENDER FOOD TRUCK HOTDOGS y hamburguesas
-
+		//RENDER SCENARIO
 		model = glm::mat4(1.0);
 		model = glm::translate(model, glm::vec3(-200.0f, 0.0f, 0.0f));
 		model = glm::translate(model, glm::vec3(mainWindow.getposx_bh(), mainWindow.getelevacion_bh(), mainWindow.getposz_bh()));
-		model = glm::scale(model, glm::vec3(2.5f, 2.5f, 2.5f));
+		model = glm::scale(model, glm::vec3(0.1f, 0.1f, 0.1f));
 		glUniformMatrix4fv(uniformModel, 1, GL_FALSE, glm::value_ptr(model));
-		FoodTruck_HotDogs_M.RenderModel();
+		Scenario_M.RenderModel();
 
 		//Acá todo lo de GL_BLEND (Texturas)
 		glEnable(GL_BLEND);
@@ -493,17 +501,6 @@ int main()
 
 		glDisable(GL_BLEND);
 
-
-
-
-
-
-
-
-
-
-
-
 		//HELPER PARA COLOCAR OBJETOS
 		if (delay_helper >= 50.0f) {
 
@@ -513,13 +510,11 @@ int main()
 
 		delay_helper += deltaTime;
 
-
-
-
 		// SECCION PARA ANIMACIÓN
 
-		// Ciclado Dia-Noche de la luz direccional
 
+
+		// Ciclado Dia-Noche de la luz direccional
 			if (delay_daynight >= 500.0f && day_flag == true) {
 
 				mainLight = DirectionalLight(1.0f, 1.0f, 1.0f,
